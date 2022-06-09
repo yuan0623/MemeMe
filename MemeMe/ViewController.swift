@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
 
+    @IBOutlet weak var Toolbar: UIToolbar!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var imagePickView: UIImageView!
     @IBOutlet weak var TopTextField: UITextField!
@@ -24,10 +25,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     let memeTextAttributes: [NSAttributedString.Key:Any] = [
+        NSAttributedString.Key.backgroundColor:UIColor.clear,
         NSAttributedString.Key.strokeColor:UIColor.white,
         NSAttributedString.Key.foregroundColor:UIColor.black,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: 2
+        NSAttributedString.Key.strokeWidth: -2
         
     ]
     
@@ -39,15 +41,16 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-    
+    func setupTextField(textFeild:UITextField){
+        textFeild.delegate = self
+        textFeild.defaultTextAttributes = memeTextAttributes
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        self.TopTextField.delegate = self
-        self.BottomTextField.delegate = self
-        TopTextField.defaultTextAttributes = memeTextAttributes
-        BottomTextField.defaultTextAttributes = memeTextAttributes
+        setupTextField(textFeild: self.TopTextField)
+        setupTextField(textFeild: self.BottomTextField)
         activity.isEnabled = false
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -63,26 +66,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
     }
+    func setupImagePicker(imagPicker: UIImagePickerController, source:UIImagePickerController.SourceType){
+        imagPicker.delegate = self
+        imagPicker.sourceType = source
+    }
     @IBAction func PickAnImage(_ sender: Any) {
         let pickerController = UIImagePickerController()
-        pickerController.delegate = self
+        setupImagePicker(imagPicker: pickerController, source: .photoLibrary)
         present(pickerController,animated: true,completion: nil)
     }
     @IBAction func PIckAnImageFromCameral(_ sender: Any) {
         let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        setupImagePicker(imagPicker: imagePicker, source: .camera)
         present(imagePicker,animated: true,completion: nil)
-    }
-    /*
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        var newText = textField.text! as NSString
-        newText = newText.replacingCharacters(in: range, with: string) as NSString
-        
-        return true
     }
-    */
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -101,13 +100,16 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if BottomTextField.isFirstResponder{
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
-
-        view.frame.origin.y = CGFloat(0)
+        if BottomTextField.isFirstResponder{
+            view.frame.origin.y = CGFloat(0)
+            
+        }
     }
 
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -129,14 +131,29 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         return memedImage
     }
     
-    
+    func IsToolBarHidden(IsHidden: Bool){
+        Toolbar.isHidden = IsHidden
+        activity.isHidden = IsHidden
+        cancel.isHidden = IsHidden
+    }
 
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: TopTextField.text!, bottomText: BottomTextField.text!, originalImage: imagePickView.image!, memedImage: generateMemedImage())
+    }
     
     @IBAction func UIActivity(_ sender: Any) {
+        IsToolBarHidden(IsHidden: true)
         let meme = Meme(topText: TopTextField.text, bottomText: BottomTextField.text, originalImage: imagePickView.image, memedImage: generateMemedImage())
         let image = meme.memedImage
-        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
         present(controller,animated: true,completion: nil)
+        controller.completionWithItemsHandler={_,complete,_,_ in
+            self.save()
+        }
+        
+        IsToolBarHidden(IsHidden: false)
+
     }
     
     
