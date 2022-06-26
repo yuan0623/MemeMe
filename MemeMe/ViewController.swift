@@ -17,13 +17,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var activity: UIButton!
     @IBOutlet weak var cancel: UIButton!
     
+    /*
     struct Meme{
         let topText:String?
         let bottomText:String?
         let originalImage: UIImage?
         let memedImage: UIImage?
     }
-    
+    */
     let memeTextAttributes: [NSAttributedString.Key:Any] = [
         NSAttributedString.Key.backgroundColor:UIColor.clear,
         NSAttributedString.Key.strokeColor:UIColor.white,
@@ -140,6 +141,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func save() {
         // Create the meme
         let meme = Meme(topText: TopTextField.text!, bottomText: BottomTextField.text!, originalImage: imagePickView.image!, memedImage: generateMemedImage())
+        // Add it to the memes array in the Application Delegation
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     @IBAction func UIActivity(_ sender: Any) {
@@ -148,9 +153,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let image = meme.memedImage
         let controller = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
         present(controller,animated: true,completion: nil)
+        self.save()
+        /*
         controller.completionWithItemsHandler={_,complete,_,_ in
             self.save()
         }
+         */
         
         IsToolBarHidden(IsHidden: false)
 
