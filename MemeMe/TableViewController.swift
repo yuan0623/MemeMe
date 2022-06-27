@@ -11,6 +11,8 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBOutlet weak var PlusButton: UIBarButtonItem!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -37,6 +39,9 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
+    @IBAction func PressPlusButton(_ sender: Any) {
+        print("plus button is pressed")
+    }
     
     
 }

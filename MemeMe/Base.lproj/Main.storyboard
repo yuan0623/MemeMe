@@ -50,6 +50,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ga4-2N-coT">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" style="plain" id="a0Z-uE-Ovb">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kuX-44-sMs">
                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
@@ -57,12 +58,19 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
+                            <connections>
+                                <action selector="PressPlusButton:" destination="cv5-W5-UWj" id="QJM-wk-wcU"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="dkC-HA-kzx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="PlusButton" destination="a0Z-uE-Ovb" id="gWS-st-Y5n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uE7-8M-i9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="313"/>
+            <point key="canvasLocation" x="116" y="313"/>
         </scene>
         <!--Table-->
         <scene sceneID="CPz-Ub-KtF">
@@ -125,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSN-ab-8cn">
-                                <rect key="frame" x="0.0" y="822" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ohn-ac-OjU"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="kJS-0a-akX"/>
@@ -150,20 +158,20 @@
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eu9-zl-7Qv">
-                                <rect key="frame" x="0.0" y="84" width="414" height="738"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="645"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWi-Xp-OUe">
-                                <rect key="frame" x="193" y="124" width="28" height="18.5"/>
+                                <rect key="frame" x="193" y="168" width="28" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="alphabet"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thB-mW-k0y">
-                                <rect key="frame" x="177.5" y="702" width="59.5" height="18.5"/>
+                                <rect key="frame" x="177.5" y="653" width="59.5" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="alphabet"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZL-5T-qHQ" userLabel="activity">
-                                <rect key="frame" x="32" y="44" width="45" height="31"/>
+                                <rect key="frame" x="32" y="88" width="45" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="xLm-Gg-xJw"/>
                                 </constraints>
@@ -174,7 +182,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbg-VH-afR">
-                                <rect key="frame" x="279" y="44" width="116" height="31"/>
+                                <rect key="frame" x="279" y="88" width="116" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="116" id="BaV-xA-HpT"/>
                                     <constraint firstAttribute="height" constant="31" id="W0g-b9-kij"/>
