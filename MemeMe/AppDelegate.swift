@@ -13,6 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var memes = [Meme]()
+    let favoriteThings = [
+        "Raindrops on roses",
+        "Whiskers on kittens",
+        "Bright copper kettles",
+        "Warm woolen mittens"
+    ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

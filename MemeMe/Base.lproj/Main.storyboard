@@ -38,6 +38,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-Wj-pRA">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SharedMeme" rowHeight="69" id="X9U-KH-Vav">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="69"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X9U-KH-Vav" id="p6a-3Q-YWf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9kq-NQ-Fd9"/>
@@ -57,20 +67,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="PressPlusBotton:" destination="cv5-W5-UWj" eventType="touchUpInside" id="pU3-39-Pbp"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="oki-3H-zdN"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="PressPlusButton:" destination="cv5-W5-UWj" id="QJM-wk-wcU"/>
-                                <segue destination="BYZ-38-t0r" kind="show" id="dkC-HA-kzx"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="PlusButton" destination="a0Z-uE-Ovb" id="gWS-st-Y5n"/>
+                        <outlet property="PlusButton" destination="kuX-44-sMs" id="qg5-5s-tV5"/>
+                        <outlet property="TableView" destination="zHh-Wj-pRA" id="Efk-oK-7e2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uE7-8M-i9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="313"/>
+            <point key="canvasLocation" x="115.94202898550725" y="312.72321428571428"/>
         </scene>
         <!--Table-->
         <scene sceneID="CPz-Ub-KtF">

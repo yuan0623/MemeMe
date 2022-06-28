@@ -145,6 +145,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        print("Meme appended")
+        print(appDelegate.memes.count)
     }
     
     @IBAction func UIActivity(_ sender: Any) {
