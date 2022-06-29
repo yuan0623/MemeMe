@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1719C6286CE1250005B689 /* SentMemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1719C5286CE1210005B689 /* SentMemeCollectionViewCell.swift */; };
 		FFA2E65A2868A2DB004C5389 /* MemeMeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2E6592868A2DB004C5389 /* MemeMeStruct.swift */; };
 		FFA2E65C2868B59E004C5389 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2E65B2868B59D004C5389 /* CollectionViewController.swift */; };
 		FFA2E65E2868B6BA004C5389 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2E65D2868B6BA004C5389 /* TableViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF1719C5286CE1210005B689 /* SentMemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFA2E6592868A2DB004C5389 /* MemeMeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeStruct.swift; sourceTree = "<group>"; };
 		FFA2E65B2868B59D004C5389 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		FFA2E65D2868B6BA004C5389 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		FFCC695928500474002B7381 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				FF1719C5286CE1210005B689 /* SentMemeCollectionViewCell.swift */,
 				FFA2E65B2868B59D004C5389 /* CollectionViewController.swift */,
 				FFA2E65D2868B6BA004C5389 /* TableViewController.swift */,
 				FFCC695A28500474002B7381 /* AppDelegate.swift */,
@@ -153,6 +156,7 @@
 				FFA2E65E2868B6BA004C5389 /* TableViewController.swift in Sources */,
 				FFA2E65C2868B59E004C5389 /* CollectionViewController.swift in Sources */,
 				FFCC695F28500474002B7381 /* ViewController.swift in Sources */,
+				FF1719C6286CE1250005B689 /* SentMemeCollectionViewCell.swift in Sources */,
 				FFCC695B28500474002B7381 /* AppDelegate.swift in Sources */,
 				FFCC695D28500474002B7381 /* SceneDelegate.swift in Sources */,
 			);

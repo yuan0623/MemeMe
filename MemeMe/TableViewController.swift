@@ -18,6 +18,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Here is the table view")
+        self.TableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -39,18 +40,19 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let meme = self.appDelegate.memes[(indexPath as NSIndexPath).row]
         
         // Set the image
-        cell.textLabel?.text = "hey"
+        if let topText = meme.topText{
+            if let BottomText = meme.bottomText{
+                cell.textLabel?.text = topText+" "+BottomText
+            }
+            else{
+                cell.textLabel?.text = topText
+            }
+        }
+        
         cell.imageView?.image = meme.memedImage
         
         
         return cell
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteThingCell")!
-        let favoriteThingForRow = appDelegate.favoriteThings[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = favoriteThingForRow
-        
-        return cell
-        */
         
     }
     
