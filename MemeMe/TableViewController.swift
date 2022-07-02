@@ -56,6 +56,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "SentMemeDetailViewController") as! SentMemeDetailViewController
+        detailController.sentMeme = self.appDelegate.memes[(indexPath as NSIndexPath).row].memedImage
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
+    
 
     @IBAction func PressPlusBotton(_ sender: Any) {
         print("plus button is pressed")

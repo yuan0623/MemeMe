@@ -36,10 +36,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         subscribeToKeyboardNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         unsubscribeFromKeyboardNotifications()
     }
     func setupTextField(textFeild:UITextField){

@@ -13,6 +13,7 @@
         <scene sceneID="7gh-T9-LwK">
             <objects>
                 <tabBarController id="1Lu-ML-OWo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wua-bH-YJl"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dEr-mB-35q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -88,6 +89,7 @@
             <objects>
                 <navigationController id="So0-c7-S5V" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Table" image="table_30x30" id="Uie-nQ-1Tj"/>
+                    <navigationItem key="navigationItem" id="kuo-m3-ZC3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ud-t1-gaL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -161,7 +163,19 @@
                             <outlet property="delegate" destination="w5d-Qs-N0L" id="lBk-jv-QEC"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="78p-jN-3Fh"/>
+                    <navigationItem key="navigationItem" id="78p-jN-3Fh">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rgO-Np-cWw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rSO-ta-2jA">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="M8K-PK-3dd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="MeMeCollectionView" destination="3aL-H3-bWO" id="TRY-EO-hxf"/>
                         <outlet property="flowLayout" destination="wmT-ZZ-5g2" id="oh9-QU-NiR"/>
@@ -236,6 +250,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <segue destination="cv5-W5-UWj" kind="show" id="GrL-KQ-1LS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -274,9 +291,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157" y="313"/>
+            <point key="canvasLocation" x="1112" y="-62"/>
+        </scene>
+        <!--Sent Meme Detail View Controller-->
+        <scene sceneID="vHG-ts-nYz">
+            <objects>
+                <viewController storyboardIdentifier="SentMemeDetailViewController" id="CZB-MD-1gP" customClass="SentMemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WBm-BQ-gvo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAM-lN-QvM">
+                                <rect key="frame" x="0.0" y="126" width="414" height="644"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RQM-zA-u6E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uAM-lN-QvM" firstAttribute="trailing" secondItem="RQM-zA-u6E" secondAttribute="trailing" id="9PZ-zG-vo3"/>
+                            <constraint firstItem="uAM-lN-QvM" firstAttribute="top" secondItem="RQM-zA-u6E" secondAttribute="top" constant="82" id="P1y-Au-RVP"/>
+                            <constraint firstItem="uAM-lN-QvM" firstAttribute="leading" secondItem="RQM-zA-u6E" secondAttribute="leading" id="PD1-1r-Qgn"/>
+                            <constraint firstItem="RQM-zA-u6E" firstAttribute="bottom" secondItem="uAM-lN-QvM" secondAttribute="bottom" constant="92" id="kmz-Q8-PyQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myImageView" destination="uAM-lN-QvM" id="xqt-Bu-ocW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wur-dd-g6y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1992.753623188406" y="-62.276785714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="M8K-PK-3dd"/>
+        <segue reference="GrL-KQ-1LS"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="collection_30x30" width="30" height="30"/>
