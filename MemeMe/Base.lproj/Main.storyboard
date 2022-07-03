@@ -178,7 +178,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MeMeCollectionView" destination="3aL-H3-bWO" id="TRY-EO-hxf"/>
-                        <outlet property="flowLayout" destination="wmT-ZZ-5g2" id="oh9-QU-NiR"/>
+                        <outlet property="flowLayout" destination="wmT-ZZ-5g2" id="3jl-JF-UZ4"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQC-I7-gwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

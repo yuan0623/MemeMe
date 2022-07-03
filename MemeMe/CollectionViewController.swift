@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 class CollectionViewController:UICollectionViewController{
+    
+   
+    
+    //MemeCollectionView.delegate
+    //MemeCollectionView.collectionViewLayout=
     //let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
@@ -17,6 +22,9 @@ class CollectionViewController:UICollectionViewController{
     
     
     @IBOutlet var MeMeCollectionView: UICollectionView!
+    
+    
+    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,11 +36,11 @@ class CollectionViewController:UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         let space:CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0/10
-        print(dimension)
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        flowLayout.itemSize = CGSize(width: 3, height: 3)
         
         
     }
@@ -58,7 +66,16 @@ class CollectionViewController:UICollectionViewController{
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
+    
 
     
     
 }
+
+extension CollectionViewController:UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 300)
+    }
+    
+}
+
