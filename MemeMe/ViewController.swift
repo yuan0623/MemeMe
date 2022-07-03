@@ -26,11 +26,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     */
     let memeTextAttributes: [NSAttributedString.Key:Any] = [
-        NSAttributedString.Key.backgroundColor:UIColor.clear,
-        NSAttributedString.Key.strokeColor:UIColor.white,
-        NSAttributedString.Key.foregroundColor:UIColor.black,
+        NSAttributedString.Key.strokeColor:UIColor.black,
+        NSAttributedString.Key.foregroundColor:UIColor.white,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: -2
+        NSAttributedString.Key.strokeWidth: -4
         
     ]
     
@@ -74,15 +73,18 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         imagPicker.sourceType = source
     }
     @IBAction func PickAnImage(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        setupImagePicker(imagPicker: pickerController, source: .photoLibrary)
-        present(pickerController,animated: true,completion: nil)
+        pickImage(dataSource: .photoLibrary)
     }
     @IBAction func PIckAnImageFromCameral(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        setupImagePicker(imagPicker: imagePicker, source: .camera)
-        present(imagePicker,animated: true,completion: nil)
+
+        pickImage(dataSource: .camera)
         
+    }
+    
+    func pickImage(dataSource: UIImagePickerController.SourceType){
+        let imagePicker = UIImagePickerController()
+        setupImagePicker(imagPicker: imagePicker, source: dataSource)
+        present(imagePicker,animated: true,completion: nil)
     }
 
     
@@ -157,15 +159,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         let image = meme.memedImage
         let controller = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
         present(controller,animated: true,completion: nil)
-        self.save()
-        /*
+        //self.save()
+        
         controller.completionWithItemsHandler={_,complete,_,_ in
             self.save()
+            self.IsToolBarHidden(IsHidden: false)
         }
-         */
         
-        IsToolBarHidden(IsHidden: false)
-
+        
     }
     
     
