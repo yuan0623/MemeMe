@@ -66,16 +66,37 @@ class CollectionViewController:UICollectionViewController{
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
-    
-
-    
-    
-}
-
-extension CollectionViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 300)
-    }
+
+            let space:CGFloat = 3.0
+            let dimension = (view.frame.size.width - (2 * space)) / 3.0
+            return CGSize(width: dimension, height: dimension)
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 3
+        }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 3
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+          if collectionView.numberOfItems(inSection: section) == 1 {
+
+               let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+
+              return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: collectionView.frame.width - flowLayout.itemSize.width)
+
+          }
+
+          return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+      }
+    
+
+    
     
 }
+
 

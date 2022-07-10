@@ -18,6 +18,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Here is the table view")
+        //self.navigationController?.navigationBar.isHidden = true
         self.TableView.reloadData()
     }
     
@@ -25,6 +26,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         TableView.delegate = self
         TableView.dataSource = self
+        //self.navigationController?.navigationBar.isHidden = false
     }
     
     

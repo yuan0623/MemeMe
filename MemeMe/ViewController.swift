@@ -28,24 +28,30 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     let memeTextAttributes: [NSAttributedString.Key:Any] = [
         NSAttributedString.Key.strokeColor:UIColor.black,
         NSAttributedString.Key.foregroundColor:UIColor.white,
-        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 60)!,
         NSAttributedString.Key.strokeWidth: -4
-        
     ]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        toolbarSetup(isHidden: true)
+        print("I am here")
         subscribeToKeyboardNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+        toolbarSetup(isHidden: false)
         unsubscribeFromKeyboardNotifications()
+    }
+    func toolbarSetup(isHidden:Bool){
+        self.tabBarController?.tabBar.isHidden = isHidden
+        self.navigationController?.navigationBar.isHidden = isHidden
     }
     func setupTextField(textFeild:UITextField){
         textFeild.delegate = self
         textFeild.defaultTextAttributes = memeTextAttributes
+        textFeild.adjustsFontSizeToFitWidth = true
+        textFeild.textAlignment = .center
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,11 +168,18 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         //self.save()
         
         controller.completionWithItemsHandler={_,complete,_,_ in
-            self.save()
+            if complete == true{
+                self.save()
+            }
+            
             self.IsToolBarHidden(IsHidden: false)
         }
         
         
+    }
+    
+    @IBAction func pressCancel(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     
