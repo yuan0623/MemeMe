@@ -7,13 +7,8 @@
 
 import Foundation
 import UIKit
-class CollectionViewController:UICollectionViewController{
-    
-   
-    
-    //MemeCollectionView.delegate
-    //MemeCollectionView.collectionViewLayout=
-    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+class CollectionViewController:UICollectionViewController,UICollectionViewDelegateFlowLayout{
+
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -35,12 +30,14 @@ class CollectionViewController:UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let space:CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
         
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: 3, height: 3)
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        //let space:CGFloat = 3.0
+        //let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        //flowLayout.minimumInteritemSpacing = space
+        //flowLayout.minimumLineSpacing = space
+        //flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
         
     }
@@ -66,33 +63,33 @@ class CollectionViewController:UICollectionViewController{
         self.navigationController!.pushViewController(detailController, animated: true)
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+            
             let space:CGFloat = 3.0
             let dimension = (view.frame.size.width - (2 * space)) / 3.0
             return CGSize(width: dimension, height: dimension)
-        }
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+      if collectionView.numberOfItems(inSection: section) == 1 {
 
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 3
-        }
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 3
-        }
+           let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
 
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-
-          if collectionView.numberOfItems(inSection: section) == 1 {
-
-               let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-
-              return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: collectionView.frame.width - flowLayout.itemSize.width)
-
-          }
-
-          return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+          return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: collectionView.frame.width - flowLayout.itemSize.width)
 
       }
+
+      return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
+    
     
 
     
