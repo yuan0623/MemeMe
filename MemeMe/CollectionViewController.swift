@@ -31,8 +31,8 @@ class CollectionViewController:UICollectionViewController,UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        self.MeMeCollectionView.delegate = self
+        self.MeMeCollectionView.dataSource = self
         //let space:CGFloat = 3.0
         //let dimension = (view.frame.size.width - (2 * space)) / 3.0
         //flowLayout.minimumInteritemSpacing = space
